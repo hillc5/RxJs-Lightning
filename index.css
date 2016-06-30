@@ -1,0 +1,30 @@
+main {
+  width: 960px;
+}
+
+section.dnd-canvas {
+  width: 700px;
+  height: 300px;
+  background-color: lightgray;
+  margin: auto;
+}
+
+div.dnd-object {
+  width: 100px;
+  height: 100px;
+  background-color: aliceblue;
+  border: 1px solid lightblue;
+  text-align: center;
+  color: gray;
+}
+
+div.dnd-object:hover {
+  cursor: pointer;
+}
+
+div.dnd-object:active {
+  cursor: move;
+  color: slategray;
+  background-color: lightblue;
+  border: 1px solid slategray;
+}
