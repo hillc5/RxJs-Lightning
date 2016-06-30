@@ -12,17 +12,16 @@ const CANVAS_WIDTH = 700,
       MAX_X = canvas.offsetLeft + CANVAS_WIDTH - DND_SIZE,
       MAX_Y = canvas.offsetTop + CANVAS_HEIGHT - DND_SIZE;
 
-mouseDrag =
-    mouseDown
-        .concatMap(contactPoint =>
-            mouseMoves.takeUntil(mouseUp)
-            .map(mouseMove => {
-                let  pageX = (mouseMove.pageX - contactPoint.offsetX),
-                     pageY = (mouseMove.pageY - contactPoint.offsetY);
+mouseDrag = mouseDown
+    .concatMap(contactPoint =>
+        mouseMoves.takeUntil(mouseUp)
+        .map(mouseMove => {
+            let  pageX = (mouseMove.pageX - contactPoint.offsetX),
+                 pageY = (mouseMove.pageY - contactPoint.offsetY);
 
-                return getPosition({ x: pageX, y: pageY });
-            })
-        );
+            return getPosition({ x: pageX, y: pageY });
+        })
+    );
 
 mouseDrag.forEach(drag => {
     dnd.style.position = 'absolute';

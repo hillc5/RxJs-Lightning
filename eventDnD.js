@@ -1,8 +1,6 @@
 function runDnD() {
     var dnd = document.getElementById('dnd'),
         canvas = document.getElementById('canvas'),
-        initLeft,
-        initTop,
         dragStartX,
         dragStartY,
         moving = false,
@@ -14,10 +12,8 @@ function runDnD() {
         MAX_Y = canvas.offsetTop + CANVAS_HEIGHT - DND_SIZE;
 
     dnd.addEventListener('mousedown', e => {
-        initTop = e.target.offsetTop;
-        initLeft = e.target.offsetLeft;
-        dragStartX = e.pageX;
-        dragStartY = e.pageY;
+        dragStartX = e.offsetX;
+        dragStartY = e.offsetY;
         moving = true;
     });
 
@@ -25,8 +21,8 @@ function runDnD() {
         var top, left, position;
 
         if (moving) {
-            left = (initLeft + (e.pageX - dragStartX));
-            top = (initTop + (e.pageY - dragStartY));
+            left = (e.pageX - dragStartX);
+            top = (e.pageY - dragStartY);
             position = getPosition({ x: left, y: top });
 
             dnd.style.position = 'absolute';
